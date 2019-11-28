@@ -48,6 +48,8 @@
   <ItemGroup>
      <Compile Include="Assets\Playfield.cs" />
      <Compile Include="Assets\Spawner.cs" />
+     <Compile Include="Assets\Test.cs" />
+     <Compile Include="Assets\Test\BlockDelete.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Hub/Editor/5.6.7f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
