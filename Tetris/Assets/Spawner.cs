@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour {
     public void spawnNext()
     {
         //Rangesは、配列から呼び出す関数らしい
-        int i = Random.Range(0, groups.Length);
+        int i = Random.Range(0, groups.Length -1);
         // Spawn Group at current Position
         Instantiate(groups[i],
         transform.position,
@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour {
 
     }
     
+    int a = Random.Range(0,2) ;
 
     void Start()
      {
