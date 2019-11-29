@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Test : MonoBehaviour {
-public GameObject[] blocks;
-public Transform blocksParent;
-private static int blockMax = 5;
-private int x;
-private int y ;
+public GameObject[] blocks; 
+private static int blockMax = 3;
+public static int x;
+public static int y ;
 public static int [,] groupA　= new int [blockMax,blockMax];
 void Start () 
     {
@@ -23,30 +22,41 @@ void Start ()
             {
                 if(groupA[x,y]==0)
                 {
-                    Instantiate(blocks[0], new Vector3(x,y,0), Quaternion.identity,blocksParent);
+                    Instantiate(blocks[0], new Vector3(x,y,0), Quaternion.identity);
                 }
                 if(groupA[x,y]==1)
                 {
-                    Instantiate(blocks[1], new Vector3(x,y,0), Quaternion.identity,blocksParent);
+                    Instantiate(blocks[1], new Vector3(x,y,0), Quaternion.identity);
                 }
                 if(groupA[x,y]==2)
                 {
-                    Instantiate(blocks[2], new Vector3(x,y,0), Quaternion.identity,blocksParent);
+                    Instantiate(blocks[2], new Vector3(x,y,0), Quaternion.identity);
                 }
             }
     }
-//public void BlockReLoad()
-
 /* 
-        for(y= 0 ; y < 5; y++)
-        for(x= 0 ; x < 5; x++)
-        if( x % 2 == 0 )
-        Instantiate(blocks[0], new Vector3(x,y,0), Quaternion.identity,blocksParent);
-        else
-        Instantiate(blocks[1], new Vector3(x,y,0), Quaternion.identity,blocksParent);
-        }
-        */
-	// Update is called once per frame
+public static void BlockReset(GameObject blockPrefab)
+{
+    int xx ;
+    int yy ;
+for(yy= 0 ; yy < 5; yy++)
+for(xx= 0 ; xx < 5; xx++)
+            {
+                if(groupA[xx,yy]==0)
+                {
+                    Instantiate(blockPrefab[0], new Vector3(xx,yy,0), Quaternion.identity,blocksParent);
+                }
+                if(groupA[xx,yy]==1)
+                {
+                    Instantiate(blockPrefab[1], new Vector3(xx,yy,0), Quaternion.identity,blocksParent);
+                }
+                if(groupA[xx,yy]==2)
+                {
+                    Instantiate(blockPrefab[2], new Vector3(xx,yy,0), Quaternion.identity,blocksParent);
+                }
+            }
+}
+*/
 int  randomNum(int r)
 {
 return (Random.Range(0,r));
