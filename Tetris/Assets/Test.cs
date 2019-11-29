@@ -5,10 +5,10 @@ using UnityEngine;
 public class Test : MonoBehaviour {
 public GameObject[] blocks;
 public Transform blocksParent;
-private int blockMax = 5;
+private static int blockMax = 5;
 private int x;
 private int y ;
-public static int [,] groupA;
+public static int [,] groupA　= new int [blockMax,blockMax];
 void Start () 
     {
     int [,] groupA = new int [blockMax,blockMax];
