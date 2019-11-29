@@ -5,16 +5,18 @@ using UnityEngine;
 public class Test : MonoBehaviour {
 public GameObject[] blocks;
 public Transform blocksParent;
-private int xMax = 5;
-private int yMax = 5;
+private int blockMax = 5;
 private int x;
 private int y ;
+public static int [,] groupA;
 void Start () 
     {
-    int [,] groupA = new int [xMax,yMax];
-        for( x =0; x<xMax; x++ )
-        for( y =0; y<yMax; y++ )
+    int [,] groupA = new int [blockMax,blockMax];
+        for( x =0; x<blockMax; x++ )
+        for( y =0; y<blockMax; y++ )
             groupA[x , y] = randomNum(3);
+
+   // BlockReLoad();
         
         for(y= 0 ; y < 5; y++)
         for(x= 0 ; x < 5; x++)
@@ -33,6 +35,8 @@ void Start ()
                 }
             }
     }
+//public void BlockReLoad()
+
 /* 
         for(y= 0 ; y < 5; y++)
         for(x= 0 ; x < 5; x++)
@@ -47,4 +51,5 @@ int  randomNum(int r)
 {
 return (Random.Range(0,r));
 }
+
 }

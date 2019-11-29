@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockDelete : MonoBehaviour {
-public GameObject obj;
-
+public static int xx;
+public static int yy;
+Test script;
 public void Delete()
     {
-        Destroy(obj);
+        Debug.Log ((int)this.transform.position.x +(",") + (int)this.transform.position.y );
+        Destroy (this.gameObject);
+        
     }
-	
 }
