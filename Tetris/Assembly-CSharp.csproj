@@ -50,6 +50,7 @@
      <Compile Include="Assets\Test\Test.cs" />
      <Compile Include="Assets\Test2\PanelClick.cs" />
      <Compile Include="Assets\Test2\Test2.cs" />
+     <Compile Include="Assets\Test2\aaaaa.cs" />
      <Compile Include="Assets\Tetris\Playfield.cs" />
      <Compile Include="Assets\Tetris\Spawner.cs" />
  <Reference Include="UnityEngine.UI">
