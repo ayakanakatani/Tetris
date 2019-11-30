@@ -13,7 +13,7 @@ public class Test2 : MonoBehaviour {
     // Use this for initialization
     void Start () 
     {
-        int[,] panelG = new int[panelMax, panelMax];
+        //int[,] panelG = new int[panelMax, panelMax];
         for (x = 0; x < panelMax; x++)
             for (y = 0; y < panelMax; y++)
             {
