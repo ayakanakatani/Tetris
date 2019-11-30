@@ -5,6 +5,7 @@ using UnityEngine;
 public class Test2 : MonoBehaviour {
     static int panelMax = 5;
     public GameObject [] panelPf;
+    public Transform panelParent;
     public static int[,] panelG = new int[panelMax, panelMax];
     public static int x;
     public static int y;
@@ -16,7 +17,7 @@ public class Test2 : MonoBehaviour {
             for (y = 0; y < panelMax; y++)
             {
                 panelG[x, y] = randomNum(3);
-                Instantiate(panelPf[0], new Vector3(x, y, 0), Quaternion.identity);
+                Instantiate(panelPf[0], new Vector3(x, y, 0), Quaternion.identity,panelParent);
             }
                 
                 
