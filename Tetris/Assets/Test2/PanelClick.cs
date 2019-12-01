@@ -13,10 +13,10 @@ void Start()
 {
 px = (int)this.transform.position.x;
 py = (int)this.transform.position.y;
-//Invoke("BlockInsta", 0.1f);
-num.text = Test2.panelG[px,py].ToString();
+BlockInsta();
+
 }
-public void BlockInsta()
+void BlockInsta()
     {
         if(Test2.panelG[px,py]==0)
         {
@@ -33,15 +33,12 @@ public void BlockInsta()
     }
 public void Click()
     {
-        Debug.Log(px +"," + py);
-        Debug.Log(Test2.panelG[px,py]);
-        Debug.Log(Test2.panelG[1,1]);
-        BlockInsta();
-
-        // foreach (Transform child in this.transform)
-        //     {
-        //         Destroy(child.gameObject);
-        //     }
+        Test2.panelG[px,py] = 99;
+        
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
     }
 }
