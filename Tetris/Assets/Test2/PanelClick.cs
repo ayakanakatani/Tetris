@@ -34,35 +34,46 @@ void BlockInsta()
     }
 public void Click()
     {
-        int blockNo = Test2.panelG[px,py];
-        int blockCount = 1;
-        int check = 1;
-
-        Test2.panelG[px,py] += 10;
-
-        //上下左右をチェック
-        if(py+check < Test2.panelMax && Test2.panelG[px,py+check] == blockNo  )
-        {
-            Test2.panelG[px,py+check] += 10;
-            blockCount += 1;
-        }
-        if(py-check >= 0 && Test2.panelG[px,py-check] == blockNo  )
-        {
-           Test2.panelG[px,py-check] += 10;
-           blockCount += 1;
-        }
+    int blockNo = Test2.panelG[px,py];
+    int blockCount = 1;
+    int check = 1;
+    Test2.panelG[px,py] += 10;
+    Check(check,blockCount,blockNo);
+        //for(check = 1; check < Test2.panelMax; check++)
+        //{
+            
+       // }
         
-        if(px+check < Test2.panelMax && Test2.panelG[px+check,py] == blockNo )
-        {
-            Test2.panelG[px+check,py] += 10;
-            blockCount += 1;
-        }
-        if(px-check >= 0  && Test2.panelG[px-check,py] == blockNo)
-        {
-            Test2.panelG[px-check,py] += 10;
-            blockCount += 1;
-        }
     }
+    
+void Check(int check , int blockCount,int blockNo)
+{
+            if(py+check < Test2.panelMax && Test2.panelG[px,py+check] == blockNo)
+            {
+                Test2.panelG[px,py+check] += 10;
+                blockCount += 1;
+                Check(check,blockCount,blockNo);
+            }
+            if(py-check >= 0 && Test2.panelG[px,py-check] == blockNo)
+            {
+                Test2.panelG[px,py-check] += 10;
+                blockCount += 1;
+                Check(check,blockCount,blockNo);
+            }
+            
+            if(px+check < Test2.panelMax && Test2.panelG[px+check,py] == blockNo)
+            {
+                Test2.panelG[px+check,py] += 10;
+                blockCount += 1;
+                Check(check,blockCount,blockNo);
+            }
+            if(px-check >= 0  && Test2.panelG[px-check,py] == blockNo)
+            {
+                Test2.panelG[px-check,py] += 10;
+                blockCount += 1;
+                Check(check,blockCount,blockNo);
+            }
+}
 void Update()
 {
 
