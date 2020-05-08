@@ -59,14 +59,24 @@ public class PanelManager : MonoBehaviour
         if (field_Num[x, y] == 0)
         {
             field_Num[x, y] = 1;
-            field_Panels[x, y].GetComponent<Image>().color = Color.blue;
-            field_Panels[x, y].GetComponent<PanelButton>().num.text = "1";
+            ChangeBlue(x, y);
         }
         else
         {
             field_Num[x, y] = 0;
-            field_Panels[x, y].GetComponent<Image>().color = Color.red;
-            field_Panels[x, y].GetComponent<PanelButton>().num.text = "0";
+            ChangeRed(x, y);
         }
     }
+    private void ChangeBlue(int x, int y)
+    {
+        field_Panels[x, y].GetComponent<Image>().color = Color.blue;
+        field_Panels[x, y].GetComponent<PanelButton>().num.text = "1";
+    }
+    private void ChangeRed(int x, int y)
+    {
+        field_Panels[x, y].GetComponent<Image>().color = Color.red;
+        field_Panels[x, y].GetComponent<PanelButton>().num.text = "0";
+    }
+
+
 }
