@@ -20,7 +20,7 @@ public class PanelManager : MonoBehaviour
                 c += 1;
             }
 
-
+        //それぞれに0～1の番号ランダムに入れた
         int fx, fy;
         for (fy = 0; fy < 5; fy++)
             for (fx = 0; fx < 5; fx++)
@@ -28,9 +28,23 @@ public class PanelManager : MonoBehaviour
                 field_Num[fx, fy] = Random.Range(0, 2);
                 field_Panels[fx, fy].GetComponent<PanelButton>().num.text = field_Num[fx, fy].ToString();
             }
+        //番号によって色をつける
+        int cx, cy;
+        for (cy = 0; cy < 5; cy++)
+            for (cx = 0; cx < 5; cx++)
+            {
+                if (field_Num[cx, cy] == 0)
+                {
+                    field_Panels[cx, cy].GetComponent<Image>().color = Color.red;
+                }
+                else
+                {
+                    field_Panels[cx, cy].GetComponent<Image>().color = Color.blue;
+                }
 
+
+            }
     }
-
     // Update is called once per frame
     void Update()
     {
