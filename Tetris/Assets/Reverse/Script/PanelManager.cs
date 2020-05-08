@@ -60,11 +60,13 @@ public class PanelManager : MonoBehaviour
         {
             field_Num[x, y] = 1;
             field_Panels[x, y].GetComponent<Image>().color = Color.blue;
+            field_Panels[x, y].GetComponent<PanelButton>().num.text = "1";
         }
         else
         {
             field_Num[x, y] = 0;
             field_Panels[x, y].GetComponent<Image>().color = Color.red;
+            field_Panels[x, y].GetComponent<PanelButton>().num.text = "0";
         }
     }
 }
