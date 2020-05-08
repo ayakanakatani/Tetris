@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PanelManager : MonoBehaviour
 {
+    public static PanelManager Ins;
     public GameObject[] obj_Panels;
     public GameObject[,] field_Panels = new GameObject[5, 5];
     public int[,] field_Num = new int[5, 5];
     void Start()
     {
+        Ins = this;
         //パネルを二次元配列に入れなおし
         int x, y;
         int c = 0;
@@ -17,6 +19,8 @@ public class PanelManager : MonoBehaviour
             for (x = 0; x < 5; x++)
             {
                 field_Panels[x, y] = obj_Panels[c];
+                field_Panels[x, y].GetComponent<PanelButton>().x = x;
+                field_Panels[x, y].GetComponent<PanelButton>().y = y;
                 c += 1;
             }
 
@@ -49,5 +53,18 @@ public class PanelManager : MonoBehaviour
     void Update()
     {
 
+    }
+    public void PanelClick(int x, int y)
+    {
+        if (field_Num[x, y] == 0)
+        {
+            field_Num[x, y] = 1;
+            field_Panels[x, y].GetComponent<Image>().color = Color.blue;
+        }
+        else
+        {
+            field_Num[x, y] = 0;
+            field_Panels[x, y].GetComponent<Image>().color = Color.red;
+        }
     }
 }
