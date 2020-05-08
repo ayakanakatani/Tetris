@@ -56,6 +56,21 @@ public class PanelManager : MonoBehaviour
     }
     public void PanelClick(int x, int y)
     {
+        ChangePanel(x, y);
+    }
+    private void ChangeBlue(int x, int y)
+    {
+        field_Panels[x, y].GetComponent<Image>().color = Color.blue;
+        field_Panels[x, y].GetComponent<PanelButton>().num.text = "1";
+
+    }
+    private void ChangeRed(int x, int y)
+    {
+        field_Panels[x, y].GetComponent<Image>().color = Color.red;
+        field_Panels[x, y].GetComponent<PanelButton>().num.text = "0";
+    }
+    private void ChangePanel(int x, int y)
+    {
         if (field_Num[x, y] == 0)
         {
             field_Num[x, y] = 1;
@@ -67,16 +82,5 @@ public class PanelManager : MonoBehaviour
             ChangeRed(x, y);
         }
     }
-    private void ChangeBlue(int x, int y)
-    {
-        field_Panels[x, y].GetComponent<Image>().color = Color.blue;
-        field_Panels[x, y].GetComponent<PanelButton>().num.text = "1";
-    }
-    private void ChangeRed(int x, int y)
-    {
-        field_Panels[x, y].GetComponent<Image>().color = Color.red;
-        field_Panels[x, y].GetComponent<PanelButton>().num.text = "0";
-    }
-
 
 }
