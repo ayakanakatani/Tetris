@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanelManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class PanelManager : MonoBehaviour
             for (fx = 0; fx < 5; fx++)
             {
                 field_Num[fx, fy] = Random.Range(0, 2);
-                //field_Panels
+                field_Panels[fx, fy].GetComponent<PanelButton>().num.text = field_Num[fx, fy].ToString();
             }
 
     }
