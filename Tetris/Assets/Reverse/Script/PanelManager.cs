@@ -57,6 +57,18 @@ public class PanelManager : MonoBehaviour
     public void PanelClick(int x, int y)
     {
         ChangePanel(x, y);
+        if ((x + 1) < 5)
+            ChangePanel(x + 1, y);
+
+        if ((x - 1) > -1)
+            ChangePanel(x - 1, y);
+
+        if ((y + 1) < 5)
+            ChangePanel(x, y + 1);
+
+        if ((y - 1) > -1)
+            ChangePanel(x, y - 1);
+
     }
     private void ChangeBlue(int x, int y)
     {
