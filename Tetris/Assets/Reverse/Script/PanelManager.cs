@@ -6,7 +6,7 @@ public class PanelManager : MonoBehaviour
 {
     public GameObject[] obj_Panels;
     public GameObject[,] field_Panels = new GameObject[5, 5];
-    // Use this for initialization
+    public int[,] field_Num = new int[5, 5];
     void Start()
     {
         //パネルを二次元配列に入れなおし
@@ -18,7 +18,16 @@ public class PanelManager : MonoBehaviour
                 field_Panels[x, y] = obj_Panels[c];
                 c += 1;
             }
-        Debug.Log(field_Panels[3, 3].gameObject.name);
+
+
+        int fx, fy;
+        for (fy = 0; fy < 5; fy++)
+            for (fx = 0; fx < 5; fx++)
+            {
+                field_Num[fx, fy] = Random.Range(0, 2);
+                //field_Panels
+            }
+
     }
 
     // Update is called once per frame
