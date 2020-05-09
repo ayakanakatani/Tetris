@@ -64,6 +64,7 @@ public class PuzzleManager : MonoBehaviour
     public void PanelClick(int x, int y)
     {
         PanelClickChangeCheck(x, y);
+        PanelDown();
         ColorChange();
     }
 
@@ -139,6 +140,20 @@ public class PuzzleManager : MonoBehaviour
             for (cx = 0; cx < fieldX; cx++)
             {
                 field_Panels[cx, cy].GetComponent<Image>().color = color[field_Num[cx, cy]];
+
+            }
+    }
+    void PanelDown()
+    {
+        int x, y;
+        for (y = 0; y < fieldY; y++)
+            for (x = 0; x < fieldX; x++)
+            {
+                if (field_Num[x, y] == 0 && y + 1 < fieldY)
+                {
+                    field_Num[x, y] = field_Num[x, y + 1];
+                    field_Panels[x, y].GetComponent<PuzzleButton>().num.text = field_Num[x, y].ToString();
+                }
 
             }
     }
