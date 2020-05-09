@@ -69,23 +69,42 @@ public class PuzzleManager : MonoBehaviour
     }
     public void PanelClick(int x, int y)
     {
+        ChangePanelNum(x, y);
         Color thisColor = field_Panels[x, y].GetComponent<Image>().color;
-        ChangePanel(x, y);
         if ((x + 1) < fieldX)
             if (field_Panels[x + 1, y].GetComponent<Image>().color == thisColor)
-                ChangePanel(x + 1, y);
+            {
+                int x2 = x + 1;
+                ChangePanelNum(x2, y);
+                PanelClick(x2, y);
+            }
+
 
         if ((x - 1) > -1)
             if (field_Panels[x - 1, y].GetComponent<Image>().color == thisColor)
-                ChangePanel(x - 1, y);
+            {
+                int x2 = x - 1;
+                ChangePanelNum(x2, y);
+                PanelClick(x2, y);
+            }
+
 
         if ((y + 1) < fieldY)
             if (field_Panels[x, y + 1].GetComponent<Image>().color == thisColor)
-                ChangePanel(x, y + 1);
+            {
+                int y2 = y + 1;
+                ChangePanelNum(x, y2);
+                PanelClick(x, y2);
+            }
+
 
         if ((y - 1) > -1)
             if (field_Panels[x, y - 1].GetComponent<Image>().color == thisColor)
-                ChangePanel(x, y - 1);
+            {
+                int y2 = y - 1;
+                ChangePanelNum(x, y2);
+                PanelClick(x, y2);
+            }
 
     }
     private void Changecolor(int cx, int cy)
@@ -104,10 +123,10 @@ public class PuzzleManager : MonoBehaviour
             field_Panels[cx, cy].GetComponent<Image>().color = color[0];
         }
     }
-    private void ChangePanel(int x, int y)
+    private void ChangePanelNum(int x, int y)
     {
         field_Num[x, y] = 0;
-        Changecolor(x, y);
+        field_Panels[x, y].GetComponent<PuzzleButton>().num.text = "0";
 
     }
 
