@@ -11,6 +11,7 @@ public class PuzzleManager : MonoBehaviour
     //public GameObject[] obj_Panels;
     public GameObject[,] field_Panels;
     public int[,] field_Num;
+    public Color[] color;
     public GameObject pfPanel;
     public Transform objParent;
     public GridLayoutGroup grid;
@@ -49,7 +50,7 @@ public class PuzzleManager : MonoBehaviour
         for (fy = 0; fy < fieldY; fy++)
             for (fx = 0; fx < fieldX; fx++)
             {
-                field_Num[fx, fy] = Random.Range(0, 2);
+                field_Num[fx, fy] = Random.Range(0, 3);
                 field_Panels[fx, fy].GetComponent<PuzzleButton>().num.text = field_Num[fx, fy].ToString();
             }
         //番号によって色をつける
@@ -57,13 +58,17 @@ public class PuzzleManager : MonoBehaviour
         for (cy = 0; cy < fieldY; cy++)
             for (cx = 0; cx < fieldX; cx++)
             {
-                if (field_Num[cx, cy] == 0)
+                if (field_Num[cx, cy] == 1)
                 {
-                    field_Panels[cx, cy].GetComponent<Image>().color = Color.red;
+                    field_Panels[cx, cy].GetComponent<Image>().color = color[1];
+                }
+                else if (field_Num[cx, cy] == 2)
+                {
+                    field_Panels[cx, cy].GetComponent<Image>().color = color[2];
                 }
                 else
                 {
-                    field_Panels[cx, cy].GetComponent<Image>().color = Color.blue;
+                    field_Panels[cx, cy].GetComponent<Image>().color = color[0];
                 }
 
 
