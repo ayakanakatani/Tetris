@@ -45,7 +45,7 @@ public class PuzzleManager : MonoBehaviour
                 c += 1;
             }
 
-        //それぞれに0～1の番号ランダムに入れた
+        //それぞれに番号ランダムに入れた
         int fx, fy;
         for (fy = 0; fy < fieldY; fy++)
             for (fx = 0; fx < fieldX; fx++)
@@ -64,7 +64,7 @@ public class PuzzleManager : MonoBehaviour
     public void PanelClick(int x, int y)
     {
         PanelClickChangeCheck(x, y);
-        PanelDown();
+        Panel0Check();
         ColorChange();
     }
 
@@ -143,18 +143,35 @@ public class PuzzleManager : MonoBehaviour
 
             }
     }
-    void PanelDown()
+    void Panel0Check()
     {
-        int x, y;
-        for (y = 0; y < fieldY; y++)
-            for (x = 0; x < fieldX; x++)
-            {
-                if (field_Num[x, y] == 0 && y + 1 < fieldY)
+        int i, x, y;
+        for (i = 0; i < fieldY; i++)
+            for (y = 0; y < fieldY; y++)
+                for (x = 0; x < fieldX; x++)
                 {
-                    field_Num[x, y] = field_Num[x, y + 1];
-                    field_Panels[x, y].GetComponent<PuzzleButton>().num.text = field_Num[x, y].ToString();
+                    if (field_Num[x, y] == 0)
+                    {
+                        PanelDown(x, y);
+                    }
+
                 }
 
-            }
+
     }
+
+    void PanelDown(int x, int y)
+    {
+        if (field_Num[x, y] == 0 && y + 1 < fieldY)
+        {
+            field_Num[x, y] = field_Num[x, y + 1];
+            field_Num[x, y + 1] = 0;
+            field_Panels[x, y + 1].GetComponent<PuzzleButton>().num.text = "0";
+            field_Panels[x, y].GetComponent<PuzzleButton>().num.text = field_Num[x, y].ToString();
+            int y2 = y + 1;
+            PanelDown(x, y2);
+        }
+
+    }
+
 }
