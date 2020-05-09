@@ -65,6 +65,7 @@ public class PuzzleManager : MonoBehaviour
     {
         PanelClickChangeCheck(x, y);
         Panel0Check();
+        NewPanel();
         ColorChange();
     }
 
@@ -156,8 +157,6 @@ public class PuzzleManager : MonoBehaviour
                     }
 
                 }
-
-
     }
 
     void PanelDown(int x, int y)
@@ -174,4 +173,18 @@ public class PuzzleManager : MonoBehaviour
 
     }
 
+    void NewPanel()
+    {
+        int fx, fy;
+        for (fy = 0; fy < fieldY; fy++)
+            for (fx = 0; fx < fieldX; fx++)
+            {
+                if (field_Num[fx, fy] == 0)
+                {
+                    field_Num[fx, fy] = Random.Range(1, 4);
+                    field_Panels[fx, fy].GetComponent<PuzzleButton>().num.text = field_Num[fx, fy].ToString();
+                }
+
+            }
+    }
 }
