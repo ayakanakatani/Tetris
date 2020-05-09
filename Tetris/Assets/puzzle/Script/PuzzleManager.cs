@@ -53,24 +53,22 @@ public class PuzzleManager : MonoBehaviour
                 field_Num[fx, fy] = Random.Range(1, 4);
                 field_Panels[fx, fy].GetComponent<PuzzleButton>().num.text = field_Num[fx, fy].ToString();
             }
-        //番号によって色をつける
-        int cx, cy;
-        for (cy = 0; cy < fieldY; cy++)
-            for (cx = 0; cx < fieldX; cx++)
-            {
-                field_Panels[cx, cy].GetComponent<Image>().color = color[field_Num[cx, cy]];
-
-            }
+        ColorChange();
     }
     // Update is called once per frame
     void Update()
     {
 
     }
+    //パネルが押されたときの処理（パネルプレハブから呼び出してる
     public void PanelClick(int x, int y)
     {
         PanelClickChangeCheck(x, y);
+        ColorChange();
     }
+
+
+
     public void PanelClickChangeCheck(int x, int y)
     {
         ChangePanelNum(x, y);
@@ -133,5 +131,15 @@ public class PuzzleManager : MonoBehaviour
         field_Panels[x, y].GetComponent<PuzzleButton>().num.text = "0";
 
     }
+    //番号によって色をつける
+    void ColorChange()
+    {
+        int cx, cy;
+        for (cy = 0; cy < fieldY; cy++)
+            for (cx = 0; cx < fieldX; cx++)
+            {
+                field_Panels[cx, cy].GetComponent<Image>().color = color[field_Num[cx, cy]];
 
+            }
+    }
 }
