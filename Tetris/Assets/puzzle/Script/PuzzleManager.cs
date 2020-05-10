@@ -65,8 +65,8 @@ public class PuzzleManager : MonoBehaviour
     {
         PanelClickChangeCheck(x, y);
         Panel0Check();
-        NewPanel();
-        ColorChange();
+        //NewPanel();
+        //ColorChange();
     }
 
 
@@ -146,21 +146,18 @@ public class PuzzleManager : MonoBehaviour
     }
     void Panel0Check()
     {
-        int i, x, y;
+        int i;
         for (i = 0; i < fieldY; i++)
-            for (y = 0; y < fieldY; y++)
-                for (x = 0; x < fieldX; x++)
-                {
-                    if (field_Num[x, y] == 0)
-                    {
-                        PanelDown(x, y);
-                    }
+        {
+            StartCoroutine(WaitDown(0.5f));
+        }
 
-                }
+
     }
 
-    void PanelDown(int x, int y)
+    IEnumerator PanelDown(float waitTime, int x, int y)
     {
+        yield return new WaitForSeconds(waitTime);
         if (field_Num[x, y] == 0 && y + 1 < fieldY)
         {
             field_Num[x, y] = field_Num[x, y + 1];
@@ -168,7 +165,10 @@ public class PuzzleManager : MonoBehaviour
             field_Panels[x, y + 1].GetComponent<PuzzleButton>().num.text = "0";
             field_Panels[x, y].GetComponent<PuzzleButton>().num.text = field_Num[x, y].ToString();
             int y2 = y + 1;
-            PanelDown(x, y2);
+            ColorChange();
+            StartCoroutine(PanelDown(0.2f, x, y2));
+
+            //StartCoroutine(WaitDown(3f, x, y2));
         }
 
     }
@@ -186,5 +186,20 @@ public class PuzzleManager : MonoBehaviour
                 }
 
             }
+    }
+    IEnumerator WaitDown(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        int x, y;
+        for (y = 0; y < fieldY; y++)
+            for (x = 0; x < fieldX; x++)
+            {
+                if (field_Num[x, y] == 0)
+                {
+                    StartCoroutine(PanelDown(0.1f, x, y));
+                }
+
+            }
+
     }
 }
