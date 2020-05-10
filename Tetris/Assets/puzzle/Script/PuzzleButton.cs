@@ -8,6 +8,7 @@ public class PuzzleButton : MonoBehaviour
     public Text num;
     public int x;
     public int y;
+    public Image animPanel;
     // Start is called before the first frame update
     void Start()
     {
