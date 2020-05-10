@@ -179,7 +179,18 @@ public class PuzzleManager : MonoBehaviour
 
             int y2 = y + 1;
             PanelDown(x, y2);
-
+        }
+        else if (field_Num[x, y] == 0 && y + 1 >= fieldY)
+        {
+            int r = Random.Range(1, 4);
+            field_Num[x, y] = r;
+            field_Panels[x, y].GetComponent<PuzzleButton>().num.text = field_Num[x, y].ToString();
+            field_Panels[x, y].GetComponent<PuzzleButton>().animPanel.color = color[r];
+            field_Panels[x, y].GetComponent<Animator>().SetTrigger("Down");
+        }
+        else
+        {
+            return;
         }
 
     }
