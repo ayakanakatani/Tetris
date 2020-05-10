@@ -64,7 +64,6 @@ public class PuzzleManager : MonoBehaviour
     public void PanelClick(int x, int y)
     {
         PanelClickChangeCheck(x, y);
-        ColorChange();
         StartCoroutine(Panel0Check(0.2f));
         //NewPanel();
         //ColorChange();
@@ -151,6 +150,7 @@ public class PuzzleManager : MonoBehaviour
         for (i = 0; i < fieldY; i++)
         {
             yield return new WaitForSeconds(wait);
+            ColorChange();
             int x, y;
             for (y = 0; y < fieldY; y++)
                 for (x = 0; x < fieldX; x++)
@@ -174,8 +174,10 @@ public class PuzzleManager : MonoBehaviour
             field_Num[x, y + 1] = 0;
             field_Panels[x, y + 1].GetComponent<PuzzleButton>().num.text = "0";
             field_Panels[x, y].GetComponent<PuzzleButton>().num.text = field_Num[x, y].ToString();
+            field_Panels[x, y].GetComponent<PuzzleButton>().animPanel.color = color[field_Num[x, y]];
+            field_Panels[x, y].GetComponent<Animator>().SetTrigger("Down");
+
             int y2 = y + 1;
-            ColorChange();
             PanelDown(x, y2);
 
         }
